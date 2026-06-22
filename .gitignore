@@ -1,0 +1,29 @@
+Total Revenue =
+SUM(Sales[Revenue])
+
+Total Profit =
+SUM(Sales[Profit])
+
+Profit Margin % =
+DIVIDE([Total Profit],[Total Revenue],0)
+
+Total Customers =
+DISTINCTCOUNT(Customers[CustomerID])
+
+Total Orders =
+DISTINCTCOUNT(Sales[OrderID])
+
+Average Order Value =
+DIVIDE([Total Revenue],[Total Orders],0)
+
+Revenue LY =
+CALCULATE(
+    [Total Revenue],
+    SAMEPERIODLASTYEAR(DateTable[Date])
+)
+
+Revenue Growth % =
+DIVIDE(
+    [Total Revenue]-[Revenue LY],
+    [Revenue LY]
+)
